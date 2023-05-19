@@ -3,17 +3,17 @@ function rotateArray(array, n) {
         let num = array.pop();
         array.unshift(num);
     }
-    console.log(array.join(' '))
+    console.log(array.join(' '));
 }
 
 rotateArray(['1',
     '2',
     '3',
     '4'],
-    2)
+    2);
 
 rotateArray(['Banana',
     'Orange',
     'Coconut',
     'Apple'],
-    15)
+    15);

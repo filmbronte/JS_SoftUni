@@ -76,3 +76,11 @@ main input[type="button"]:hover {
   color: white;
   cursor: pointer;
 }
+
+#error {
+  text-align: center;
+  color: red;
+  letter-spacing: 3px;
+  font-size: large;
+  font-family:math;
+}

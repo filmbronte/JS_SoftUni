@@ -4,8 +4,8 @@ function addItem() {
     const input = document.getElementById('newItemText');
     const error = document.getElementById('error');
     const newAnchor = document.createElement('a');
-    newAnchor.setAttribute('href', '#');
-    // newAnchor.href = '#';
+    // newAnchor.setAttribute('href', '#');
+    newAnchor.href = '#';
 
 
     if (input.value != '') {
@@ -15,14 +15,19 @@ function addItem() {
         ul.appendChild(newLi);
         input.value = '';
         error.textContent = '';
-        newAnchor.addEventListener('click', deleteHandler);
+        newAnchor.addEventListener('click', () => {
+            const choice = confirm('Are you sure?');
+            if (choice) {
+                newLi.remove();
+            }
+        });
 
     } else {
         error.textContent = 'Put in a value!';
     }
 
-    function deleteHandler(e) {
-        const li = e.currentTarget.parentElement;
-        li.remove();
-    }
+    // function deleteHandler(e) {
+    //     const li = e.currentTarget.parentElement;
+    //     li.remove();
+    // }
 }

@@ -14,7 +14,9 @@ function focused() {
 }
 
 
+
 // without delegation
+
 
 // function focused() {
 //     const input = document.querySelectorAll('input');

@@ -8,17 +8,15 @@ function create(words) {
       p.textContent = word;
       p.style.display = 'none';
       div.appendChild(p);
+
       content.appendChild(div);
-
-
    }
 
    function onClick(e) {
-      // const p = e.currentTarget.children[0];
-      // p.style.display = 'block';
       if (e.target.tagName == 'DIV' && e.target != content) {
          e.target.children[0].style.display = 'block';
       }
+      // const p = e.currentTarget.children[0];
+      // p.style.display = 'block';
    }
-
 }

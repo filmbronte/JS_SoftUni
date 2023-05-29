@@ -67,3 +67,6 @@ input[name="user3Username"], input[name="user2Username"], input[name="user1Usern
     display: none;
 }
 
+button:disabled {
+    background-color: #cccc;
+}

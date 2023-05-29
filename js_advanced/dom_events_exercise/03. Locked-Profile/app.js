@@ -1,17 +1,15 @@
 function lockedProfile() {
+
     const buttons = document.getElementsByTagName('button');
 
     for (let button of buttons) {
+        button.disabled = true;
         button.addEventListener('click', showMore);
     }
 
     function showMore(e) {
         const profile = e.target.parentElement;
         const isActive = profile.querySelector('input[type="radio"][value="unlock"]').checked;
-
-
-        // const hiddenField = e.target.parentElement.querySelector('div');
-
 
         const hiddenField = Array
             .from(e.target.parentElement.querySelectorAll('div'))
@@ -29,4 +27,24 @@ function lockedProfile() {
             }
         }
     }
-}
+
+    /////////////////////////////////////////
+    // Live Demo (button disable):
+
+
+    const radio = Array.from(document.querySelectorAll('input[type="radio"]'));
+
+    for (let input of radio) {
+        input.addEventListener('click', onLockToggle);
+    }
+
+    function onLockToggle(e) {
+        const button = e.target.parentElement.querySelector('button');
+
+        if (e.target.value == 'lock') {
+            button.disabled = true;
+        } else {
+            button.disabled = false;
+        }
+    }
+}   

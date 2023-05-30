@@ -1,3 +1,10 @@
+/**
+ * 
+ * @param {function} area 
+ * @param {function} vol 
+ * @param {string} input 
+ * @returns 
+ */
 function solve(area, vol, input) {
     const cubes = JSON.parse(input);
     const result = [];

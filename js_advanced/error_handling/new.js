@@ -1,3 +1,10 @@
-const sum = require('./sum').default;
+const sum = require('./sum');
 
-console.log(sum(1, 2));
+
+describe('Demo test', () => {
+    it('works with 5 and 3', () => {
+        if (sum(5, 3) != 8) {
+            throw Error('did not work');
+        }
+    });
+});

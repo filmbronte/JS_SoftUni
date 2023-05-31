@@ -1,18 +1,34 @@
 function printDeckOfCards(cards) {
-    let result = [];
+    // let result = [];
 
-    for (let card of cards) {
-        const face = card.slice(0, -1);
-        const suit = card.slice(-1);
-        try {
-            result.push(createCard(face, suit));
-        } catch (e) {
-            console.log('Invalid card: ' + card);
-            return;
-        }
+    // for (let card of cards) {
+    //     const face = card.slice(0, -1);
+    //     const suit = card.slice(-1);
+    //     try {
+    //         result.push(createCard(face, suit));
+    //     } catch (e) {
+    //         console.log('Invalid card: ' + card);
+    //         return;
+    //     }
+    // }
+
+    // console.log(result.join(' '));
+
+    try {
+        console.log(cards.map(card => {
+            const face = card.slice(0, -1);
+            const suit = card.slice(-1);
+            try {
+                return createCard(face, suit);
+            } catch (e) {
+                throw new Error('Invalid card: ' + card);
+            }
+
+        }).join(' '));
+
+    } catch (e) {
+        console.log(e.message);
     }
-
-    console.log(result.join(' '));
 
     function createCard(face, suit) {
         const faces = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];

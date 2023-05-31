@@ -4,7 +4,6 @@ const rgbToHexColor = require('./6');
 describe('RBG to Hex', () => {
 
     describe('check colors', () => {
-
         it('returns white', () => {
             expect(rgbToHexColor(255, 255, 255)).to.equal('#FFFFFF');
         });
@@ -32,7 +31,6 @@ describe('RBG to Hex', () => {
         it('returns undefined if missing parameters', () => {
             expect(rgbToHexColor(0, 0)).to.be.undefined;
         });
-
     });
 
     describe('incorrect type', () => {

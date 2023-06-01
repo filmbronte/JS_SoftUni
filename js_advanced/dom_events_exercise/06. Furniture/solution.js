@@ -4,6 +4,7 @@ function solve() {
   const tbody = document.querySelector('tbody');
 
   generateBtn.addEventListener('click', generate);
+  buyBtn.addEventListener('click', buy);
 
   // parse input json and create table
   // -- find input text area
@@ -44,27 +45,31 @@ function solve() {
 
       tbody.appendChild(row);
     }
-
-    // find user choices and summarise purchase
-    // -- find all checked boxes
-    // -- for every row:
-    // ---- read data from parent row
-    // ---- append to result
-    // -- output result to textarea
-
-    function createColumn(type, content) {
-      const result = document.createElement('td');
-      let inner;
-      if (type == 'img') {
-        inner = document.createElement('img');
-        inner.src = content;
-      } else {
-        inner = document.createElement('p');
-        inner.textContent = content;
-      }
-      result.appendChild(inner);
-
-      return result;
-    }
   }
+  // find user choices and summarise purchase
+  // -- find all checked boxes
+  // -- for every row:
+  // ---- read data from parent row
+  // ---- append to result
+  // -- output result to textarea
+
+  function buy() {
+    Array.from(document.querySelectorAll('input'));
+  }
+
+  function createColumn(type, content) {
+    const result = document.createElement('td');
+    let inner;
+    if (type == 'img') {
+      inner = document.createElement('img');
+      inner.src = content;
+    } else {
+      inner = document.createElement('p');
+      inner.textContent = content;
+    }
+    result.appendChild(inner);
+
+    return result;
+  }
+
 }

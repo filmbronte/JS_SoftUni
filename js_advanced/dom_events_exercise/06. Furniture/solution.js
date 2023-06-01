@@ -68,8 +68,6 @@ function solve() {
   // -- output result to textarea
 
   function buy() {
-
-    // Array.from(document.querySelectorAll('input'));
     let decoration = 0;
 
     const bought = items.filter(i => i.isChecked() == true);

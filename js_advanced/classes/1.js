@@ -6,10 +6,15 @@ class Person {
         this.email = email;
     }
 
+    get fullName() {
+        return `${this.firstName} ${this.lastName}`;
+    }
+
     toString() {
-        return `${this.firstName} ${this.lastName} (age: ${this.age}, email: ${this.email})`;
+        return `${this.fullName} (age: ${this.age}, email: ${this.email})`;
     }
 }
 
 let person = new Person('Anna', 'Simpson', 22, 'anna@yahoo.com');
 console.log(person.toString());
+// console.log(person.fullName);

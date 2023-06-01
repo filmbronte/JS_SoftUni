@@ -6,12 +6,17 @@ function solve() {
   generateBtn.addEventListener('click', generate);
   buyBtn.addEventListener('click', buy);
 
+  const items = [];
+  let list = [];
+  let total = 0;
+
   // parse input json and create table
   // -- find input text area
   // -- parse JSON
   // -- for every item:
   // ---- create row
   // ---- append row to table body
+
 
   function generate() {
     const data = JSON.parse(input.value);
@@ -40,10 +45,19 @@ function solve() {
       const c5 = document.createElement('td');
       const checkbox = document.createElement('input');
       checkbox.type = 'checkbox';
-      c5.append(checkbox);
-      row.append(c5);
+      c5.appendChild(checkbox);
+      row.appendChild(c5);
 
       tbody.appendChild(row);
+
+      items.push({
+        ...item,
+        isChecked() {
+          return checkbox.checked;
+        }
+      });
+
+
     }
   }
   // find user choices and summarise purchase
@@ -54,7 +68,28 @@ function solve() {
   // -- output result to textarea
 
   function buy() {
-    Array.from(document.querySelectorAll('input'));
+
+    // Array.from(document.querySelectorAll('input'));
+    let decoration = 0;
+
+    const bought = items.filter(i => i.isChecked() == true);
+    console.log(bought);
+
+    for (let item of bought) {
+      list.push(item.name);
+      total += Number(item.price);
+      decoration += Number(item.decFactor);
+
+    }
+
+    decoration /= bought.length;
+
+    output.value = [
+      `Bought furniture: ${list.join(', ')}`,
+      `Total price: ${total.toFixed(2)}`,
+      `Average decoration factor: ${decoration}`
+    ].join('\n');
+
   }
 
   function createColumn(type, content) {

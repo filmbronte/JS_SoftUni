@@ -17,8 +17,10 @@ function createPerson(firstName, lastName) {
             // }
             const [first, last] = value.split(' ');
             if (first != undefined && last != undefined) {
-                this.firstName = first;
-                this.lastName = last;
+                if (first != '' && last != '') {
+                    this.firstName = first;
+                    this.lastName = last;
+                }
             }
         }
 

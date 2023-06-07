@@ -1,3 +1,5 @@
+var assert = require('assert');
+
 function createPerson(firstName, lastName) {
     const person = {
         firstName,
@@ -47,3 +49,10 @@ person.fullName = "Nikola Tesla";
 console.log(person.firstName); //Nikola
 
 console.log(person.lastName); //Tesla 
+
+
+let Person = createPerson;
+let a = new Person("Albert", "Simpson");
+let actual = a.fullName;
+let expected = "Albert Simpson";
+assert.equal(actual, expected);

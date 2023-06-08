@@ -1,4 +1,5 @@
-function carFactory(obj) {
+function carFactory(input) {
+    const obj = { ...input };
     const result = {
         model: obj.model,
         engine: {},

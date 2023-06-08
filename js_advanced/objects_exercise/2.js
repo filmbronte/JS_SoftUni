@@ -1,4 +1,5 @@
-function constructionCrew(obj) {
+function constructionCrew(input) {
+    const obj = { ...input };
 
     if (obj.dizziness == true) {
         obj.levelOfHydrated += (0.1 * obj.weight) * obj.experience;

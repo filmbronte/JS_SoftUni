@@ -22,8 +22,6 @@ function solve() {
 
       textArea.textContent += `Added ${productName.textContent} for ${Number(productPrice.textContent).toFixed(2)} to the cart.\n`;
 
-      // console.log(productName.textContent);
-      // console.log(productPrice.textContent);
    }
 
    function checkout(e) {

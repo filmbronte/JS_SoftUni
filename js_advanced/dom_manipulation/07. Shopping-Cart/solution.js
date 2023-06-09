@@ -24,7 +24,7 @@ function solve() {
 
    }
 
-   function checkout(e) {
+   function checkout() {
       textArea.textContent += `You bought ${products.join(', ')} for ${Number(total).toFixed(2)}.`;
       addBtn.forEach(btn => {
          btn.disabled = true;

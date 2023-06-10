@@ -10,6 +10,7 @@ function solve() {
   //     output.innerHTML += `<p> ${newSentences} </p>`;
   //   }
   // }
+
   while (sentences.length > 0) {
     const newSentences = sentences.splice(0, 3).join('. ');
     const p = document.createElement('p');

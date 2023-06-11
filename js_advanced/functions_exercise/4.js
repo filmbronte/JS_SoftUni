@@ -1,10 +1,16 @@
 function solution() {
-    let ingedients = {
+    const stock = {
         protein: 0,
         carbohydrate: 0,
         fat: 0,
         flavour: 0,
     };
+
+    const commands = {
+        restock,
+        prepare,
+        report,
+    }
 
     const recipes = {
         apple: {
@@ -33,36 +39,41 @@ function solution() {
         },
     };
 
-    return function (input) {
-        input = input.split(' ');
+    return manager;
 
-        if (input[0] == 'restock') {
-            let microelement = input[1];
-            let quantity = Number(input[2]);
+    function manager(input) {
+        const [command, param, qty] = input.split(' ');
+        return commands[command](param, qty);
+    }
 
-            // if (!ingedients[microelement]) {
-            //     ingedients[microelement] = 0;
-            // }
-            ingedients[microelement] += quantity;
-        }
+    function restock(type, qty) {
+        stock[type] += Number(qty);
+        return 'Success';
+    }
 
-        if (input[0] == 'prepare') {
-            let recipe = input[1];
-            let quantity = input[2];
+    function prepare(recipeAsStr, qty) {
+        qty = Number(qty);
+        const recipe = Object.entries(recipes[recipeAsStr]);
 
-            if (recipe == 'lemonade') {
-                if (ingedients['carbohydrate'] >= 10) {
-                    ingedients['carbohydrate'] -= 10;
-                } else {
-                    return `Error: not enough carbohydrate in stock`;
-                }
+        recipe.forEach(ingredient => ingredient[1] *= qty);
+
+        for (let [ingredient, quantity] of recipe) {
+            if (stock[ingredient] < quantity) {
+                return `Error: not enough ${ingredient} in stock`;
             }
         }
-        return ingedients;
-    };
+        recipe.forEach(([ingredient, quantity]) => stock[ingredient] -= quantity);
+
+        return 'Success';
+    }
+
+    function report() {
+        return `protein=${stock.protein} carbohydrate=${stock.carbohydrate} fat=${stock.fat} flavour=${stock.flavour}`;
+    }
 
 }
 
 let manager = solution();
 console.log(manager("restock flavour 50")); // Success
 console.log(manager("prepare lemonade 4"));
+console.log(manager("report"));

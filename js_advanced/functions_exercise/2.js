@@ -1,18 +1,20 @@
 function argInfo(...input) {
-    const occurances = {
-        string: 0,
-        number: 0,
-        function: 0.
-    };
+    const occurances = {};
+
     const sorted = [];
 
     for (let el of input) {
-        console.log(`${typeof el}: ${el}`);
-        occurances[typeof el]++;
+        const type = typeof el;
+        console.log(`${type}: ${el}`);
+
+        if (!occurances[type]) {
+            occurances[type] = 0;
+        }
+        occurances[type]++;
     }
 
     for (let type in occurances) {
-        sorted.push([type, occurances[type]]);
+        sorted.push([type, Number(occurances[type])]);
     }
 
     sorted.sort((a, b) => {
@@ -21,7 +23,10 @@ function argInfo(...input) {
 
 
     for (let occ of sorted) {
-        console.log(`${occ[0]} = ${occ[1]}`);
+        if (occ[1] !== 0) {
+            console.log(`${occ[0]} = ${occ[1]}`);
+
+        }
     }
 
 }

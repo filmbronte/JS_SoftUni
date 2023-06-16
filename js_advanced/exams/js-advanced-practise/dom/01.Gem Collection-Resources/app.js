@@ -40,7 +40,7 @@ function solve() {
         article.appendChild(pCarats);
 
         const pPrice = document.createElement('p');
-        pPrice.textContent = `Price: ${priceInput.value}`;
+        pPrice.textContent = `Price: ${priceInput.value}$`;
         article.appendChild(pPrice);
 
         const pType = document.createElement('p');
